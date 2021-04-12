@@ -39,7 +39,7 @@ class CodeDX {
     this.params = context.CustomParameters
     this.apiKey = this.params['apiKey']
     this.baseUrl = this.params['baseUrl']
-    this.baseUrl = this.params['path']
+    this.path = this.params['path']
     //this.outputWriter = context.OutputWriter.create('XML', { RootNode: 'ROOT' })
   }
 
@@ -102,7 +102,7 @@ class CodeDX {
   }
 
   async run(){
-    const options = this.requestOptions({}, "/todos/1")
+    const options = this.requestOptions({}, this.path)
     const {body, response} = await new Promise((resolve, reject) => {
       httpRequest(options, (error, response, body) => {
         if (error) reject(error)
