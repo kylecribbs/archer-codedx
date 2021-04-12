@@ -9,7 +9,7 @@ const context = {
   "CustomParameters": {
     "apiKey": process.env.apiKey,
     "baseUrl": process.env.baseUrl,
-    "path": process.env.apiEndpoint
+    "apiEndpoint": process.env.apiEndpoint
   },
   "OutputWriter": {
     "create": function(){}
@@ -102,6 +102,7 @@ class CodeDX {
   }
 
   async run(){
+    console.log(this.apiEndpoint)
     const options = this.requestOptions({}, this.apiEndpoint)
     const {body, response} = await new Promise((resolve, reject) => {
       httpRequest(options, (error, response, body) => {
