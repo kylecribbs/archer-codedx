@@ -8,7 +8,8 @@ fs = require('fs')
 const context = {
   "CustomParameters": {
     "apiKey": process.env.apiKey,
-    "baseUrl": process.env.baseUrl
+    "baseUrl": process.env.baseUrl,
+    "path": process.env.path
   },
   "OutputWriter": {
     "create": function(){}
@@ -38,6 +39,7 @@ class CodeDX {
     this.params = context.CustomParameters
     this.apiKey = this.params['apiKey']
     this.baseUrl = this.params['baseUrl']
+    this.baseUrl = this.params['path']
     //this.outputWriter = context.OutputWriter.create('XML', { RootNode: 'ROOT' })
   }
 
