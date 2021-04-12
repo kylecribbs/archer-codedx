@@ -102,6 +102,7 @@ class CodeDX {
   }
 
   async run(){
+    console.log(this.path)
     const options = this.requestOptions({}, this.path)
     const {body, response} = await new Promise((resolve, reject) => {
       httpRequest(options, (error, response, body) => {
