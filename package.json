@@ -1,0 +1,27 @@
+{
+  "name": "archer-codedx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "datafeed-codedx.js",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "request": "^2.88.0",
+    "xml2js": "^0.4.19",
+    "xmldom": "^0.1.27",
+    "xpath": "^0.0.27"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylecribbs/archer-codedx.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kylecribbs/archer-codedx/issues"
+  },
+  "homepage": "https://github.com/kylecribbs/archer-codedx#readme"
+}

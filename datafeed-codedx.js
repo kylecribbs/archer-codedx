@@ -1,16 +1,19 @@
+const dotenv = require('dotenv');
+dotenv.config();
+
+httpRequest = require('request')
+parser = require('xml2js')
+fs = require('fs')
+
 const context = {
   "CustomParameters": {
-    "apiKey": 'asdasd',
-    "baseUrl": "https://jsonplaceholder.typicode.com"
+    "apiKey": process.env.apiKey,
+    "baseUrl": process.env.baseUrl
   },
   "OutputWriter": {
     "create": function(){}
   }
 }
-
-httpRequest = require('request')
-parser = require('xml2js')
-fs = require('fs')
 
 
 /**
@@ -109,6 +112,5 @@ class CodeDX {
   }
 
 }
-
 
 new CodeDX(context).run()
