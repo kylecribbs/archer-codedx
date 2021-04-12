@@ -9,7 +9,7 @@ const context = {
   "CustomParameters": {
     "apiKey": process.env.apiKey,
     "baseUrl": process.env.baseUrl,
-    "path": process.env.path
+    "path": process.env.apiEndpoint
   },
   "OutputWriter": {
     "create": function(){}
@@ -39,7 +39,7 @@ class CodeDX {
     this.params = context.CustomParameters
     this.apiKey = this.params['apiKey']
     this.baseUrl = this.params['baseUrl']
-    this.path = this.params['path']
+    this.apiEndpoint = this.params['apiEndpoint']
     //this.outputWriter = context.OutputWriter.create('XML', { RootNode: 'ROOT' })
   }
 
@@ -102,8 +102,7 @@ class CodeDX {
   }
 
   async run(){
-    console.log(this.path)
-    const options = this.requestOptions({}, this.path)
+    const options = this.requestOptions({}, this.apiEndpoint)
     const {body, response} = await new Promise((resolve, reject) => {
       httpRequest(options, (error, response, body) => {
         if (error) reject(error)
