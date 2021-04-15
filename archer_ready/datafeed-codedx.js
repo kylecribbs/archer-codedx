@@ -116,4 +116,16 @@ class CodeDX {
 
 }
 
-new CodeDX(context).run()
+async function excute(){
+  try{
+    const data = await new CodeDX(context).run()
+    if(data) transfer(null, data)
+    else transfer(null)
+  } catch (err){
+    transfer(err)
+  }
+}
+
+execute()
+
+module.exports = excute
