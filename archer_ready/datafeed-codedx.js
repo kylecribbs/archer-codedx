@@ -65,7 +65,6 @@ class CodeDX {
       : dataObject
     const xmlBufferArray = jsData.reduce((preVal, curVal, i, src) => {
       const xmlData = responseBuilder.buildObject(curVal)
-      console.log(xmlData)
       preVal.push(Buffer.from(xmlData, 'utf8'))
       return preVal
     }, [])
@@ -116,7 +115,7 @@ class CodeDX {
 
 }
 
-async function excute(){
+async function excute(context){
   try{
     const data = await new CodeDX(context).run()
     if(data) transfer(null, data)

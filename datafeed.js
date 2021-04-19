@@ -12,6 +12,17 @@ const requiredParams = {
   baseUrl: 'base url of api'
 }
 
+
+const context = {
+  "CustomParameters": {
+    "apiKey": process.env.apiKey,
+    "baseUrl": process.env.baseUrl
+  },
+  "OutputWriter": {
+    "create": function(){}
+  }
+}
+
 // CUSTOM PARAMETERS
 // --This object contains the custom parameters entered in the Custom Parameters section of the Transport tab of the data feed.
 // --To access a parameter later in the script, use the following formats:
@@ -55,15 +66,6 @@ function transfer (error = null, data = null) {
   callback(null)
 }
 
-
-/**
- *
- * @param {*} key
- * @param {*} override
- * @returns
- */
-function
-
 /**
  * Retreives a specific options object with optional overwrite
  * @param {String} key The key representing the desired options to retrieve
@@ -83,19 +85,14 @@ function initOptions (key, override = {}) {
     },
     /** Custom Options */
     // Authentication endpoint
-    auth: {
-      method: 'POST',
+    codedxProjects: {
+      method: 'GET',
       baseUrl: params.baseUrl,
       url: '',
-      json: true,
-      body: {},
-      rejectUnauthorized: false
-    },
-    // data endpoint
-    ipsummary: {
-      method: 'POST',
-      baseUrl: params.baseUrl,
-      url: '',
+      headers: {
+        content-type: "application/json",
+        
+      },
       json: true,
       body: {},
       rejectUnauthorized: false
@@ -113,11 +110,13 @@ function jsonArrayToXmlBuffer (jsonData, rootElement = null) {
   const responseBuilder = new parser.Builder(initOptions('buildXml'))
   const dataObject = typeof jsonData === 'string'
     ? JSON.parse(jsonData) : jsonData
+    dataObject = Array.isArray(dataObject) ? dataObject : Array(jsonData)
   const jsData = rootElement
     ? dataObject[rootElement]
     : dataObject
   const xmlBufferArray = jsData.reduce((preVal, curVal, i, src) => {
-    preVal.push(Buffer.from(responseBuilder.buildObject(curVal), 'utf8'))
+    const xmlData = responseBuilder.buildObject(curVal)
+    preVal.push(Buffer.from(xmlData, 'utf8'))
     return preVal
   }, [])
   return Buffer.concat(xmlBufferArray)
@@ -235,7 +234,6 @@ function Runner () {
         if (!cookieLen || !this.token) {
           this.options = initOptions('auth', { jar: this.jar })
           const { response } = await retryEndpoint(this.options)
-          this.token = response.headers['Token']
           this.options = {}
         }
       } catch (err) {
