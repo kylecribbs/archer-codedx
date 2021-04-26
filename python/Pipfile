@@ -8,5 +8,5 @@ verify_ssl = true
 [packages]
 requests = "*"
 python-dotenv = "*"
-codedxapi = {editable = true,git = "https://github.com/broadinstitute/dsp-appsec-codedx-api-client-python.git"}
+codedx-api = {editable = true,git = "https://github.com/broadinstitute/dsp-appsec-codedx-api-client-python.git"}
 
