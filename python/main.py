@@ -36,8 +36,9 @@ def main():
     cdx = CodeDxAPI.CodeDx(codedx_base_url, codedx_api_key)
     # {"projects": [{'id': 123, 'name': 'some name'}]}
     projects = cdx.get_projects()
-    print(projects)
-    analysis = cdx.get_xml(projects['projects'][2]['id'], include_standards=True, include_source=True)
+    project_id = projects['projects'][2]['id']
+    project_id = 65
+    analysis = cdx.get_xml(, include_standards=True, include_source=True)
     with open('report.xml', 'r') as f:
         job_data = json.load(f)
 
