@@ -41,7 +41,10 @@ def main():
         job_data = json.load(f)
 
     data2 = cdx.get_report(job_data, 'application/xml', 'report_data.xml', 'waiting')
-    print(data2)
+    with open('report_data.xml', 'r') as f:
+        data = json.load(f)
+
+    print(data)
     # with open(filename, 'w+') as file:
 
     #     # Make a call to retrieve the total number of CPEs
