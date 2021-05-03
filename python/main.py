@@ -37,7 +37,7 @@ def main():
     projects = cdx.get_projects()
     analysis = cdx.get_xml(projects['projects'][0]['id'], include_standards=True, include_source=True)
     with open('report.xml', 'r') as f:
-			job_data = json.load(f)
+		job_data = json.load(f)
     
     data2 = cdx.get_report(job_data, 'application/xml', 'report_data.xml', 'waiting')
     print(data2)
