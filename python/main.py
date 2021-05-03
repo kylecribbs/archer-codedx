@@ -33,15 +33,13 @@ def main():
     archer_password = os.getenv('archer_password')
 
     cdx = CodeDxAPI.CodeDx(codedx_base_url, codedx_api_key)
-    # # {"projects": [{'id': 123, 'name': 'some name'}]}
-    # projects = cdx.get_projects()
-    # analysis = cdx.get_xml(projects['projects'][0]['id'])
-    # print(analysis)
+    # {"projects": [{'id': 123, 'name': 'some name'}]}
+    projects = cdx.get_projects()
+    analysis = cdx.get_xml(projects['projects'][0]['id'], include_standards=True, include_source=True)
+    with open('report.xml', 'r') as f:
+			job_data = json.load(f)
     
-    data = cdx.job_result('67051965-d417-4143-a3b3-f889899bf49b', accept='application/xml;charset=utf-8')
-    print(data)
-
-    data2 = cdx.get_report({'jobId': '67051965-d417-4143-a3b3-f889899bf49b'}, 'application/xml', 'report_data.xml', 'waiting')
+    data2 = cdx.get_report(job_data, 'application/xml', 'report_data.xml', 'waiting')
     print(data2)
     # with open(filename, 'w+') as file:
 
