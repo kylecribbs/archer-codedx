@@ -48,7 +48,7 @@ def main():
 
     data2 = cdx.get_report(job_data, 'application/xml', 'report_data.xml', 'waiting')
     with open('report_data.xml', 'r') as f:
-        data = json.load(f)
+        data = f.read()
 
     print(data)
     # with open(filename, 'w+') as file:
