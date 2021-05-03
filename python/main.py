@@ -33,7 +33,11 @@ def main():
     archer_password = os.getenv('archer_password')
 
     cdx = CodeDxAPI.CodeDx(codedx_base_url, codedx_api_key)
-    print(cdx.get_projects())
+    # {"projects": [{'id': 123, 'name': 'some name'}]}
+    projets = cdx.get_projects()
+    analysis = cdx.analyze(projects[0]['id'], 'test')
+    print(analysis)
+    
     # with open(filename, 'w+') as file:
 
     #     # Make a call to retrieve the total number of CPEs
