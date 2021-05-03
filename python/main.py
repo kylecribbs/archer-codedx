@@ -41,6 +41,7 @@ def main():
     projects = cdx.get_projects()
     project_id = projects['projects'][2]['id']
     project_id = 65
+    print(f"Getting results for project id {project_id}")
     analysis = cdx.get_xml(project_id, include_standards=True, include_source=True)
     with open('report.xml', 'r') as f:
         job_data = json.load(f)
