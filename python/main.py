@@ -41,6 +41,8 @@ def main():
     data = cdx.job_result('67051965-d417-4143-a3b3-f889899bf49b', accept='application/xml;charset=utf-8')
     print(data)
 
+    data2 = cdx.get_report('67051965-d417-4143-a3b3-f889899bf49b', 'application/xml', 'report_data.xml', 'waiting')
+
     # with open(filename, 'w+') as file:
 
     #     # Make a call to retrieve the total number of CPEs
