@@ -1,8 +1,11 @@
 import os
+import urllib3
 
 from codedx_api import CodeDxAPI
 from dotenv import load_dotenv
 import json
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 def batch(iterable, n=1):
     l = len(iterable)
