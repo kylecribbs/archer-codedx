@@ -38,7 +38,7 @@ def main():
     # analysis = cdx.get_xml(projects['projects'][0]['id'])
     # print(analysis)
     
-    cdx.job_result('67051965-d417-4143-a3b3-f889899bf49b')
+    cdx.job_result('67051965-d417-4143-a3b3-f889899bf49b', accept='application/xml;charset=utf-8')
 
 
     # with open(filename, 'w+') as file:
