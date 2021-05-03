@@ -35,7 +35,7 @@ def main():
     cdx = CodeDxAPI.CodeDx(codedx_base_url, codedx_api_key)
     # {"projects": [{'id': 123, 'name': 'some name'}]}
     projects = cdx.get_projects()
-    analysis = cdx.analyze(projects['projects'][0]['id'], 'test.xml')
+    analysis = cdx.get_xml(projects['projects'][0]['id'])
     print(analysis)
     
     # with open(filename, 'w+') as file:
