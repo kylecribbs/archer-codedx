@@ -2,6 +2,7 @@ import os
 
 from codedx_api import CodeDxAPI
 from dotenv import load_dotenv
+import json
 
 def batch(iterable, n=1):
     l = len(iterable)
